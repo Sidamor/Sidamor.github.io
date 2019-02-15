@@ -277,7 +277,9 @@
 </ol>
 <p>在这里可以修改标题title 标签tags 分类categories<br>当然，这个文件的内容需要符合MarkDown的格式</p>
 <h2 id="Hexo日常部署"><a href="#Hexo日常部署" class="headerlink" title="Hexo日常部署"></a>Hexo日常部署</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<p>依次为 清除、生成、上传</p>
+<p>依次为 清除、生成、上传<br>deploy如果失败，运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error Code: ERROR Deployer not found: git</span><br><span class="line">Run: npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure></p>
+<h2 id="Hexo-源文件-amp-主题-备份"><a href="#Hexo-源文件-amp-主题-备份" class="headerlink" title="Hexo 源文件&amp;主题 备份"></a>Hexo 源文件&amp;主题 备份</h2><p>安装hexo-git-backup<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-git-backup</span><br></pre></td></tr></table></figure></p>
+<p>同时需要在_config.yml中添加：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">backup:</span></span><br><span class="line"><span class="attr">    type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">    theme:</span> <span class="string">TKL</span></span><br><span class="line"><span class="attr">    repository:</span></span><br><span class="line"><span class="attr">       github:</span> <span class="string">git@github.com:Sidamor/hexo-git-backup.git</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><ol>
 <li><p>下载你的主题到本地</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/ur_name/ur_name.github.io.git themes/theme_name</span><br></pre></td></tr></table></figure>
@@ -292,7 +294,7 @@
 <h2 id="使用本地图片"><a href="#使用本地图片" class="headerlink" title="使用本地图片"></a>使用本地图片</h2><p>解决方案：CodeFalling/hexo-asset-image </p>
 <ol>
 <li>首先确认 _config.yml 中有 post_asset_folder:true 。 </li>
-<li>在 hexo 目录，执行<br> npm install <a href="https://github.com/CodeFalling/hexo-asset-image" target="_blank" rel="noopener">https://github.com/CodeFalling/hexo-asset-image</a> –save</li>
+<li>在 hexo 目录，执行<br> npm install hexo-asset-image –save</li>
 <li>在source/_post中，找到文章md所在目录，建立文章同名目录，将图片放入新建目录中。</li>
 <li>只要使用<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![name](文章名/Pic.png)</span><br></pre></td></tr></table></figure>
 </li>
