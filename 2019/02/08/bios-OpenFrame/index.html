@@ -115,7 +115,7 @@
 				    
 				    <li><a href="/categories/Wechaty/" class="animsition-link">Wechaty<small>(1)</small></a></li>
 				    
-				    <li><a href="/categories/bios/" class="animsition-link">bios<small>(1)</small></a></li>
+				    <li><a href="/categories/bios/" class="animsition-link">bios<small>(2)</small></a></li>
 				    
 				    <li><a href="/categories/iot/" class="animsition-link">iot<small>(1)</small></a></li>
 				    
@@ -304,11 +304,17 @@
 <p>异步通知数据格式<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Event Response</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"eventSrc"</span>: <span class="string">"https://$productLink$/api/event/lamp/overheated"</span>,</span><br><span class="line">  <span class="attr">"eventContent"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"overheated"</span>: &#123;</span><br><span class="line">        <span class="attr">"data"</span>: <span class="number">102</span>,</span><br><span class="line">        <span class="attr">"timestamp"</span>: <span class="string">"2017-01-25T15:01:35+00:00"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="取消订阅"><a href="#取消订阅" class="headerlink" title="取消订阅"></a>取消订阅</h4><p>请求数据格式<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Request a Service</span><br><span class="line">POST https://$productLink$/api/event/lamp/overheated</span><br><span class="line">Accept: application/json</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"type"</span> :<span class="string">"unSubscribe"</span>,</span><br><span class="line">  <span class="attr">"callbackUri"</span>: <span class="string">"https://ip:port/eventRcv"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>响应数据格式<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">200 OK</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"type"</span> :<span class="string">"unSubscribe"</span>,</span><br><span class="line">  <span class="attr">"eventSrc"</span>:<span class="string">"https://$productLink$/api/event/lamp/overheated"</span>,</span><br><span class="line">  <span class="attr">"callbackUri"</span>: <span class="string">"https://ip:port/eventRcv"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+<h2 id="调用上报"><a href="#调用上报" class="headerlink" title="调用上报"></a>调用上报</h2><p>作为操作系统，bios需要知道每一条PSE被调用的情况。</p>
+<p>服务提供商需要在每一次成功提供服务之后向bios的消息队列提交一条消息，消息体结构如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"type"</span>:<span class="string">"Property/Service/Event"</span>,</span><br><span class="line">  <span class="attr">"link"</span>:<span class="string">"https://$productLink$/api"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2019/02/15/bios-3d-ued/" style="float: left;">
+        ← 智慧园区 3D可视化UED设计
+    </a>
     
     
     <a class="pull-right" href="/2017/06/28/Docker4IOT/">
