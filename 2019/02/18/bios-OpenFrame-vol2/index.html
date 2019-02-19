@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2017/5 | Sidamor</title>
+  <title>bios-开放框架-II | Sidamor</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -196,78 +196,87 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 </div>
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2017/05/23/BigData-Vol-2/">BigData-Vol-2</a></h4>
-                            
-                            <p><time datetime="2017-05-23T09:14:32.000Z"><a href="/2017/05/23/BigData-Vol-2/">2017-05-23</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2017/05/22/BigData-Vol-1/">BigData-Vol-1</a></h4>
-                            
-                            <p><time datetime="2017-05-22T03:51:00.000Z"><a href="/2017/05/22/BigData-Vol-1/">2017-05-22</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2019-02-18T01:51:12.000Z" itemprop="datePublished">
+          2019-02-18
+      </time>
+    
+    
+    | 
+    <a href="/tags/bios/">bios</a>,
+    
+    <a href="/tags/openframe/">openframe</a>
+    
+    
+</span>
+                <h1>bios-开放框架-II</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<p>上一篇调研的记录有点凌乱，另开一篇进行整理。</p>
+<a id="more"></a>
+<h1 id="简要总结"><a href="#简要总结" class="headerlink" title="简要总结"></a>简要总结</h1><p>在整个开放框架中，存在三个角色：开放框架、服务提供商、消费者。</p>
+<p>明确一下三个角色分别要做什么。</p>
+<h2 id="开放框架要做什么"><a href="#开放框架要做什么" class="headerlink" title="开放框架要做什么"></a>开放框架要做什么</h2><ul>
+<li>服务配置页面，服务提供商将自己的服务公布在开放框架</li>
+<li>用户注册页面，消费者需要在bios注册一个自己的账户</li>
+<li>服务调用情况上报，维护一个消息队列，接收服务调用情况的上报</li>
+</ul>
+<p>PS.以后可能还需要完善的</p>
+<ul>
+<li>封装服务提供商搭建服务的API类库</li>
+<li>封装消费者调用服务的API类库</li>
+<li>封装服务调用情况上报的类库</li>
+<li>服务是否可用的检测</li>
+</ul>
+<h2 id="服务提供商要做什么"><a href="#服务提供商要做什么" class="headerlink" title="服务提供商要做什么"></a>服务提供商要做什么</h2><ul>
+<li>服务搭建</li>
+<li>在bios注册自己的服务</li>
+<li>对于用户调用进行鉴权</li>
+<li>上报服务调用情况</li>
+</ul>
+<h2 id="消费者要做什么"><a href="#消费者要做什么" class="headerlink" title="消费者要做什么"></a>消费者要做什么</h2><ul>
+<li>在bios注册，获取调用服务权限</li>
+<li>在bios获取服务列表</li>
+<li>调用服务</li>
+</ul>
+<p><img src="/2019/02/18/bios-OpenFrame-vol2/brief.jpg" alt="brief"></p>
+<h1 id="详细说明"><a href="#详细说明" class="headerlink" title="详细说明"></a>详细说明</h1><p>针对之前介绍到的功能：服务注册、用户注册、获取服务列表、调用服务、上报服务调用，作一个详细说明。</p>
+<h2 id="服务注册"><a href="#服务注册" class="headerlink" title="服务注册"></a>服务注册</h2><p>服务提供商根据物模型规范填写服务详情（Json格式），提交到开放平台。<br>这一流程考虑在开放平台形成注册页面，填写相应字段，由平台生成json格式服务定义。</p>
+<p><center>产品注册页面</center><br><img src="/2019/02/18/bios-OpenFrame-vol2/product.png" alt="产品注册页面"></p>
+<p><center>属性注册页面</center><br><img src="/2019/02/18/bios-OpenFrame-vol2/property.png" alt="属性注册页面"></p>
+<p><center>服务注册页面</center><br><img src="/2019/02/18/bios-OpenFrame-vol2/service.png" alt="服务注册页面"></p>
+<p><center>事件注册页面</center><br><img src="/2019/02/18/bios-OpenFrame-vol2/event.png" alt="事件注册页面"></p>
+<h2 id="用户注册"><a href="#用户注册" class="headerlink" title="用户注册"></a>用户注册</h2><p>用户注册，获取UserKey，UserSecret，用于调用服务时的鉴权</p>
+<h2 id="获取服务列表"><a href="#获取服务列表" class="headerlink" title="获取服务列表"></a>获取服务列表</h2><p>用户从开放平台获取已注册服务列表，这里应该对于服务提供商，以及下属服务有一个层级划分，便于用户查看。</p>
+<h2 id="调用服务"><a href="#调用服务" class="headerlink" title="调用服务"></a>调用服务</h2><p>用户根据服务列表的请求地址，发起服务调用请求（附带鉴权信息）；<br>服务根据开放平台提供的鉴权接口进行权限认证；</p>
+<h2 id="上报服务调用"><a href="#上报服务调用" class="headerlink" title="上报服务调用"></a>上报服务调用</h2><p>在提供服务后，上报服务调用信息（用户、服务详情、调用结果）</p>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>dear</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2019/02/15/bios-3d-ued/">
+        智慧园区 3D可视化UED设计 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
