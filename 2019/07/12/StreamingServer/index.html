@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Tag: BigData | Sidamor</title>
+  <title>流媒体服务器技术调研 | Sidamor</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -84,7 +84,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -202,78 +202,84 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 </div>
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2017/05/23/BigData-Vol-2/">BigData-Vol-2</a></h4>
-                            
-                            <p><time datetime="2017-05-23T09:14:32.000Z"><a href="/2017/05/23/BigData-Vol-2/">2017-05-23</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2017/05/22/BigData-Vol-1/">BigData-Vol-1</a></h4>
-                            
-                            <p><time datetime="2017-05-22T03:51:00.000Z"><a href="/2017/05/22/BigData-Vol-1/">2017-05-22</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2019-07-12T03:02:27.000Z" itemprop="datePublished">
+          2019-07-12
+      </time>
+    
+    
+    | 
+    <a href="/tags/rtsp/">rtsp</a>,
+    
+    <a href="/tags/rtmp/">rtmp</a>,
+    
+    <a href="/tags/flv/">flv</a>,
+    
+    <a href="/tags/hls/">hls</a>
+    
+    
+</span>
+                <h1>流媒体服务器技术调研</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<p>2B的物联网，好像怎么都绕不开流媒体。 从十年前，基于各个厂商的sdk开发ocx控件，在IE下查看实时、历史视频。</p>
+<p>到了后来，可以在各种内核的浏览器中嵌入VLC的播放器，直接播放rtsp视频流。可惜好景不长，各个浏览器突然就停止了对于VLC控件的支持（基于NPAPI）。</p>
+<p>之后，又到了各个厂家提供可以“嵌入”浏览器的插件（实质还是播放rtsp视频流）的现在。</p>
+<p>跨操作系统（LINUX/WIN/IOS/ANDROID）、跨浏览器（SAFRI/CHROME/IE/FIREFOX），播放端使用通用的<video>标签，或者flash就可以播放，这是我想要做的一个解决方案。</video></p>
+<a id="more"></a>
+<h1 id="flash"><a href="#flash" class="headerlink" title="flash"></a>flash</h1><p><a href="https://github.com/AxisCommunications/locomote-video-player" target="_blank" rel="noopener">locomote@github</a> 可以实现<br>But，出于安全考虑，从 Flash 10 开始，需要一个 Socket Policy Server 来“授权”，才能允许 Flash 读取其他服务器上的内容，而且你读的视频流在哪个IP地址，Socket Policy Server 也必须在那个服务器上（默认843端口），而摄像头显然没有条件让你在上面跑另外一个服务。</p>
+<h2 id="实测"><a href="#实测" class="headerlink" title="实测:"></a>实测:</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;message: "Socket reported a security error: Error #2048.", code: 731&#125;</span><br></pre></td></tr></table></figure>
+<p>locomote-video-player上的issue回答:<br>If you can’t add a socket policy server on the RTSP server, you will not be able to use Locomote to play RTSP from that server.</p>
+<p>显然，指望厂商在IPC或者NVR上加这个policy server不现实，这个方案需要自己搭建一个流媒体服务器，对于厂家的rtsp进行转发，同时，在流媒体服务器上增加一个policy服务</p>
+<h2 id="解决方案（731）"><a href="#解决方案（731）" class="headerlink" title="解决方案（731）"></a>解决方案（731）</h2><p>增加policy服务之后：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;message: "RTSPClient: Unable to determine control URL.", code: 824&#125;</span><br></pre></td></tr></table></figure>
+<p>locomote-video-player上的 issue#117 回答:<br>missing the protocol “rtsp://“ into the “Content-base” header</p>
+<h2 id="解决方案（824）："><a href="#解决方案（824）：" class="headerlink" title="解决方案（824）："></a>解决方案（824）：</h2><ol>
+<li>RTSP服务器返回头，Content-base 加上rtsp://</li>
+</ol>
+<p>需要在RTSP服务器端做修改，不同厂商、不同型号，较难做到。</p>
+<ol start="2">
+<li>修改locomote-video-player源码重新编译，解析RTSP返回头时，支持不带rtsp://的Content-base</li>
+</ol>
+<p>locomote源码中,http/url.as里的function isAbsolute校验,返回true<br>根据<a href="https://github.com/AxisCommunications/locomote-video-player" target="_blank" rel="noopener">locomote@github</a>中Building Locomote章节描述，重新编译Player.swf</p>
+<p>注意：</p>
+<ul>
+<li>先运行 npm install gulp，安装gulp，再通过gulp进行编译(gulpfile.js)</li>
+<li>需要安装<a href="https://ant.apache.org/bindownload.cgi" target="_blank" rel="noopener">ant-apache</a> 镜像选择国内的，安装完配置到PATH中</li>
+<li>Flex SDK不支持64位的jvm.dll(mxmlc Error loading: jre\bin\server\jvm.dll)，装好后改\node_modules\flex-sdk\lib\flex_sdk\bin\jvm.config的java.home参数</li>
+</ul>
+<p>步骤：</p>
+<ul>
+<li><code>git clone https://github.com/AxisCommunications/locomote-video-player.git</code></li>
+</ul>
+<p>参考链接：<br><a href="https://bnlt.org/2019/%E5%87%A0%E7%A7%8D%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BERTSP%E8%A7%86%E9%A2%91%E6%B5%81%E7%9A%84%E6%96%B9%E6%A1%88/" target="_blank" rel="noopener">几种浏览器播放RTSP视频流的方案</a><br><a href="https://github.com/AxisCommunications/locomote-video-player" target="_blank" rel="noopener">locomote@github</a><br><a href="https://www.adobe.com/devnet/flashplayer/articles/socket_policy_files.html" target="_blank" rel="noopener">Setting up a socket policy file server</a></p>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>dear</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="pagination" role="pagination">
+    
+    
+    <a class="pull-right" href="/2019/07/05/bios-bluepaint-vol2/">
+        bios蓝图-vol2 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
