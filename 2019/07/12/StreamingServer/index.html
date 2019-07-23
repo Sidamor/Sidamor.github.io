@@ -248,17 +248,53 @@
 <li>修改locomote-video-player源码重新编译，解析RTSP返回头时，支持不带rtsp://的Content-base</li>
 </ol>
 <p>locomote源码中,http/url.as里的function isAbsolute校验,返回true<br>根据<a href="https://github.com/AxisCommunications/locomote-video-player" target="_blank" rel="noopener">locomote@github</a>中Building Locomote章节描述，重新编译Player.swf</p>
+<p>重新编译后，发现EasyDarwin返回的content-base居然是null，</p>
 <p>注意：</p>
 <ul>
 <li>先运行 npm install gulp，安装gulp，再通过gulp进行编译(gulpfile.js)</li>
 <li>需要安装<a href="https://ant.apache.org/bindownload.cgi" target="_blank" rel="noopener">ant-apache</a> 镜像选择国内的，安装完配置到PATH中</li>
 <li>Flex SDK不支持64位的jvm.dll(mxmlc Error loading: jre\bin\server\jvm.dll)，装好后改\node_modules\flex-sdk\lib\flex_sdk\bin\jvm.config的java.home参数</li>
+<li>windows下Flex报错乱码，无法定位错误原因,</li>
+<li>nvm切换到7.9.0版本，Ubuntu编译顺利通过</li>
 </ul>
-<p>步骤：</p>
+<p>Ubuntu下编译步骤：</p>
 <ul>
 <li><code>git clone https://github.com/AxisCommunications/locomote-video-player.git</code></li>
+<li>安装nvm管理nodejs版本<br><code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</code></li>
+<li><code>npm install -g gulp</code></li>
+<li><code>npm install</code></li>
+<li><code>apt install ant</code></li>
+<li><code>gulp</code></li>
 </ul>
 <p>参考链接：<br><a href="https://bnlt.org/2019/%E5%87%A0%E7%A7%8D%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BERTSP%E8%A7%86%E9%A2%91%E6%B5%81%E7%9A%84%E6%96%B9%E6%A1%88/" target="_blank" rel="noopener">几种浏览器播放RTSP视频流的方案</a><br><a href="https://github.com/AxisCommunications/locomote-video-player" target="_blank" rel="noopener">locomote@github</a><br><a href="https://www.adobe.com/devnet/flashplayer/articles/socket_policy_files.html" target="_blank" rel="noopener">Setting up a socket policy file server</a></p>
+<h1 id="流媒体技术调研阶段总结："><a href="#流媒体技术调研阶段总结：" class="headerlink" title="流媒体技术调研阶段总结："></a>流媒体技术调研阶段总结：</h1><ol>
+<li>各大厂商IPC提供的流媒体格式普遍都只有RTSP</li>
+<li>海康中心服务器提供的RTSP为私有协议，不是标准的RTSP，仅支持海康提供的SDK/控件</li>
+<li>浏览器对于RTSP的支持度为0<br>3.1 VLC控件，基于NPAPI，各大浏览器已经取消了对于NPAPI的支持<br>3.2 FLASH, 9之后，对于socket通信，增加了policyfile认证要求，需要再IPC端增加policy server。IPC的操作系统不开放，在实施过程中难度过大。</li>
+<li>浏览器现支持RTMP\HLS</li>
+</ol>
+<p>总结：需要搭建流媒体服务器，对于RTSP流进行转换，提供RTMP/HLS格式。</p>
+<h1 id="开源的解决方案"><a href="#开源的解决方案" class="headerlink" title="开源的解决方案"></a>开源的解决方案</h1><p>看了一圈开源的解决方案，解决了一些转码的问题，界面都不太友好。</p>
+<p>一些集群的方案也都是收费的。</p>
+<p>还是考虑自己搭建一个流媒体服务器，转码+管理平台。</p>
+<p>管理平台不难做，转码部分考虑用ffmpeg。毕竟从头开始看RTSP还是需要一定时间成本的。</p>
+<h1 id="ffmpeg-nginx"><a href="#ffmpeg-nginx" class="headerlink" title="ffmpeg + nginx"></a>ffmpeg + nginx</h1><ul>
+<li><p>服务器安装ffmpeg环境，java代码可以命令行调用ffmpeg，对于指定rtsp进行转码，推送到nginx指定地址。指定rtsp及指定nginx地址由平台进行配置。</p>
+</li>
+<li><p>当前端发起一个预览请求，后端起一个ffmpeg实例，进行转码。同时，前端取指定rtmp地址获取转码后的视频流。</p>
+</li>
+<li><p>java执行ffmpeg命令使用开源项目<a href="https://github.com/eguid/FFCH4J" target="_blank" rel="noopener">FFCH4J</a></p>
+</li>
+<li><p>rtmp播放要使用videojs 5.x的版本，或者videojs7配合videojs-flash.min.js可以播放</p>
+</li>
+<li><p>RTMP延迟2-3s <code>ffmpeg -i rtsp://admin:a1234567@10.30.30.124:554/h264/ch33/sub/av_stream -vcodec libx264 -acodec aac -f flv rtmp://192.168.10.87:1935/live/home</code></p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>播放器<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 导入的videojs是7.0版本以上的，集成VHS协议库，可播放HLS流媒体视频 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://unpkg.com/video.js/dist/video-js.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/video.js/dist/video.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 引入的videojs-flash.js插件主要是为播放rtmp视频流--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/videojs-flash@2/dist/videojs-flash.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">'myvideo'</span> <span class="attr">width</span>=<span class="string">960</span> <span class="attr">height</span>=<span class="string">540</span> <span class="attr">class</span>=<span class="string">"video-js vjs-default-skin"</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- RTMP直播源地址--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"rtmp://127.0.0.1:1935/live/home"</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"> </span></span><br><span class="line"><span class="undefined">            var player = videojs('myvideo', &#123;&#125;, function()&#123;console.log('videojs播放器初始化成功')&#125;)</span></span><br><span class="line"><span class="undefined">            player.play();</span></span><br><span class="line"><span class="undefined">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>HLS，文件切片，延迟&gt;30S<br><code>ffmpeg -i rtsp://admin1:abc123456@10.30.30.100:554/cam/realmonitor?channel=1&amp;subtype=0 -vcodec libx264 -codec:a libfaac -map 0 -f hls -hls_time 10 playlist.m3u8</code></li>
+</ul>
+<h1 id="根据RTSP协议标准进行转码"><a href="#根据RTSP协议标准进行转码" class="headerlink" title="根据RTSP协议标准进行转码"></a>根据RTSP协议标准进行转码</h1><p>熟悉RTSP&amp;RTMP&amp;HLS协议标准，基于socket获取RTSP码流，转换成RTMP/HLS，推送到指定地址。</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
