@@ -222,9 +222,7 @@
     
     <a href="/tags/单点登陆/">单点登陆</a>,
     
-    <a href="/tags/功能权限/">功能权限</a>,
-    
-    <a href="/tags/数据权限/">数据权限</a>
+    <a href="/tags/功能权限/">功能权限</a>
     
     
 </span>
@@ -252,7 +250,8 @@
 <p><img src="/2019/08/07/APIGateway/图1.png" alt="图1"></p>
 <p>结合之前描述的应用情景，加入我们需要的一些用户、权限模块，如图2所示</p>
 <p><img src="/2019/08/07/APIGateway/图2.png" alt="图2"></p>
-<h2 id="API网关"><a href="#API网关" class="headerlink" title="API网关"></a>API网关</h2><ol>
+<h2 id="API网关"><a href="#API网关" class="headerlink" title="API网关"></a>API网关</h2><p><a href="https://www.servicemesher.com/istio-handbook/best-practices/how-to-implement-ingress-gateway.html" target="_blank" rel="noopener">为服务网格选择入口网关</a><br>ApiGateway + Sidecar Proxy</p>
+<ol>
 <li>所有服务注册（不论集群内部还是外部），api网关提供（权限中心）接口发放appKey&amp;appSecret</li>
 <li>k8s内的服务间调用，采用k8s自带的监控体系</li>
 <li>k8s外服务调用私有云的服务，通过api网关进行调用监控</li>
@@ -274,6 +273,17 @@
 <ul>
 <li>k8s内的服务被调用，自行到权限中心进行鉴权</li>
 <li>k8s外的服务被调用，向api网关发起鉴权请求</li>
+</ul>
+<h3 id="功能权限"><a href="#功能权限" class="headerlink" title="功能权限"></a>功能权限</h3><ul>
+<li>每个业务系统/应用，注册时需要配置功能权限list回调地址</li>
+<li>权限系统在做配置时，从回调地址获取权限list</li>
+<li>配置完成后，入库保存</li>
+</ul>
+<h3 id="数据权限"><a href="#数据权限" class="headerlink" title="数据权限"></a>数据权限</h3><p><em>数据权限根据每个业务模块单独配置（因为每个业务模块的数据权限维度都不相同）</em></p>
+<ul>
+<li>每一个业务模块，注册的时候需要配置数据权限list回调地址</li>
+<li>权限系统在做配置时，从回调地址获取权限list</li>
+<li>配置完成后，入库保存</li>
 </ul>
 
             <div class="clearfix"></div>
