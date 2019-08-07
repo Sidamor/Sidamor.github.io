@@ -113,6 +113,8 @@
 				    
 				    <li><a href="/categories/JVM/" class="animsition-link">JVM<small>(1)</small></a></li>
 				    
+				    <li><a href="/categories/MicroService/" class="animsition-link">MicroService<small>(1)</small></a></li>
+				    
 				    <li><a href="/categories/StreamingServer/" class="animsition-link">StreamingServer<small>(2)</small></a></li>
 				    
 				    <li><a href="/categories/Wechaty/" class="animsition-link">Wechaty<small>(1)</small></a></li>
@@ -341,6 +343,14 @@
 <li>用java调用命令行的方式(exec)，执行ffmpeg转码，从而灵活配置参数。github上有可用的开源项目<a href="https://github.com/eguid/FFCH4J" target="_blank" rel="noopener">FFCH4J</a>，感觉作用不大，可以自己写。</li>
 </ol>
 <p>PPS<br>现在的直播延迟有点大(10s+)，ffmpeg的转码效率应该可以进行优化，待研究。</p>
+<h2 id="ffmpeg最新版安装"><a href="#ffmpeg最新版安装" class="headerlink" title="ffmpeg最新版安装"></a>ffmpeg最新版安装</h2><p>[centos下]<a href="https://trac.ffmpeg.org/wiki/CompilationGuide/Centos" target="_blank" rel="noopener">https://trac.ffmpeg.org/wiki/CompilationGuide/Centos</a></p>
+<h2 id="参数调优"><a href="#参数调优" class="headerlink" title="参数调优"></a>参数调优</h2><ol>
+<li>码流类型subtype可以选择子码流，速度大大加快</li>
+<li>开启x264的 -preset fast/faster/verfast/superfast/ultrafast参数</li>
+<li>使用-tune zerolatency 参数</li>
+<li>码率控制，官方推荐-b和-bufsize搭配使用  -b:v 2000k -bufsize 2000k</li>
+</ol>
+<p>当前最优参数（3-5s延迟）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i <span class="string">"rtsp://admin:abc123456@hua@10.30.30.109:554/cam/realmonitor?channel=1&amp;subtype=1"</span> -tune zerolatency -vcodec libx264 -preset ultrafast -acodec aac -f flv rtmp://192.168.10.36:1935/myapp/home</span><br></pre></td></tr></table></figure></p>
 <h1 id="播放端"><a href="#播放端" class="headerlink" title="播放端"></a>播放端</h1><ul>
 <li>rtmp<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rtmp://192.168.10.36:1935/myapp/home</span><br></pre></td></tr></table></figure>
 </li>
@@ -366,6 +376,10 @@
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2019/08/07/APIGateway/" style="float: left;">
+        ← APIGateway
+    </a>
     
     
     <a class="pull-right" href="/2019/07/12/StreamingServer/">
