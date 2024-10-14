@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>流媒体服务器技术调研 | Sidamor</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Sidamor">
+    <meta name="author" content="Sidamor">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Sidamor" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/BigData/" class="animsition-link">BigData<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Hexo/" class="animsition-link">Hexo<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/IOT/" class="animsition-link">IOT<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/JVM/" class="animsition-link">JVM<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MicroService/" class="animsition-link">MicroService<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/StreamingServer/" class="animsition-link">StreamingServer<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Wechaty/" class="animsition-link">Wechaty<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/arm/" class="animsition-link">arm<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/bios/" class="animsition-link">bios<small>(7)</small></a></li>
+				    
+				    <li><a href="/categories/iot/" class="animsition-link">iot<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/tools/" class="animsition-link">tools<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Sidamor</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/Sidamor" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="http://weibo.com/si5d" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.instagram.com/starlv" title="instagram" target="_blank"><i class="icon-instagram"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2019-07-12T03:02:27.000Z" itemprop="datePublished">
+          2019-07-12
+      </time>
+    
+    
+    | 
+    <a href='/tags/rtsp/'>rtsp</a>,
+    
+    <a href='/tags/rtmp/'>rtmp</a>,
+    
+    <a href='/tags/flv/'>flv</a>,
+    
+    <a href='/tags/hls/'>hls</a>
+    
+    
+</span>
+                <h1>流媒体服务器技术调研</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>2B的物联网，好像怎么都绕不开流媒体。 从十年前，基于各个厂商的sdk开发ocx控件，在IE下查看实时、历史视频。</p>
+<p>到了后来，可以在各种内核的浏览器中嵌入VLC的播放器，直接播放rtsp视频流。可惜好景不长，各个浏览器突然就停止了对于VLC控件的支持（基于NPAPI）。</p>
+<p>之后，又到了各个厂家提供可以“嵌入”浏览器的插件（实质还是播放rtsp视频流）的现在。</p>
+<p>跨操作系统（LINUX&#x2F;WIN&#x2F;IOS&#x2F;ANDROID）、跨浏览器（SAFRI&#x2F;CHROME&#x2F;IE&#x2F;FIREFOX），播放端使用通用的<video>标签，或者flash就可以播放，这是我想要做的一个解决方案。</video></p>
+<span id="more"></span>
+
+<h1 id="flash"><a href="#flash" class="headerlink" title="flash"></a>flash</h1><p><a href="https://github.com/AxisCommunications/locomote-video-player">locomote@github</a> 可以实现<br>But，出于安全考虑，从 Flash 10 开始，需要一个 Socket Policy Server 来“授权”，才能允许 Flash 读取其他服务器上的内容，而且你读的视频流在哪个IP地址，Socket Policy Server 也必须在那个服务器上（默认843端口），而摄像头显然没有条件让你在上面跑另外一个服务。</p>
+<h2 id="实测"><a href="#实测" class="headerlink" title="实测:"></a>实测:</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>message<span class="punctuation">:</span> <span class="string">&quot;Socket reported a security error: Error #2048.&quot;</span><span class="punctuation">,</span> code<span class="punctuation">:</span> <span class="number">731</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>locomote-video-player上的issue回答:<br>If you can’t add a socket policy server on the RTSP server, you will not be able to use Locomote to play RTSP from that server.</p>
+<p>显然，指望厂商在IPC或者NVR上加这个policy server不现实，这个方案需要自己搭建一个流媒体服务器，对于厂家的rtsp进行转发，同时，在流媒体服务器上增加一个policy服务</p>
+<h2 id="解决方案（731）"><a href="#解决方案（731）" class="headerlink" title="解决方案（731）"></a>解决方案（731）</h2><p>增加policy服务之后：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>message<span class="punctuation">:</span> <span class="string">&quot;RTSPClient: Unable to determine control URL.&quot;</span><span class="punctuation">,</span> code<span class="punctuation">:</span> <span class="number">824</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>locomote-video-player上的 issue#117 回答:<br>missing the protocol “rtsp:&#x2F;&#x2F;“ into the “Content-base” header</p>
+<h2 id="解决方案（824）："><a href="#解决方案（824）：" class="headerlink" title="解决方案（824）："></a>解决方案（824）：</h2><ol>
+<li>RTSP服务器返回头，Content-base 加上rtsp:&#x2F;&#x2F;</li>
+</ol>
+<p>需要在RTSP服务器端做修改，不同厂商、不同型号，较难做到。</p>
+<ol start="2">
+<li>修改locomote-video-player源码重新编译，解析RTSP返回头时，支持不带rtsp:&#x2F;&#x2F;的Content-base</li>
+</ol>
+<p>locomote源码中,http&#x2F;url.as里的function isAbsolute校验,返回true<br>根据<a href="https://github.com/AxisCommunications/locomote-video-player">locomote@github</a>中Building Locomote章节描述，重新编译Player.swf</p>
+<p>重新编译后，发现EasyDarwin返回的content-base居然是null，</p>
+<p>注意：</p>
+<ul>
+<li>先运行 npm install gulp，安装gulp，再通过gulp进行编译(gulpfile.js)</li>
+<li>需要安装<a href="https://ant.apache.org/bindownload.cgi">ant-apache</a> 镜像选择国内的，安装完配置到PATH中</li>
+<li>Flex SDK不支持64位的jvm.dll(mxmlc Error loading: jre\bin\server\jvm.dll)，装好后改\node_modules\flex-sdk\lib\flex_sdk\bin\jvm.config的java.home参数</li>
+<li>windows下Flex报错乱码，无法定位错误原因,</li>
+<li>nvm切换到7.9.0版本，Ubuntu编译顺利通过</li>
+</ul>
+<p>Ubuntu下编译步骤：</p>
+<ul>
+<li><code>git clone https://github.com/AxisCommunications/locomote-video-player.git</code></li>
+<li>安装nvm管理nodejs版本<br><code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</code></li>
+<li><code>npm install -g gulp</code></li>
+<li><code>npm install</code></li>
+<li><code>apt install ant</code></li>
+<li><code>gulp</code></li>
+</ul>
+<p>参考链接：<br><a href="https://bnlt.org/2019/%E5%87%A0%E7%A7%8D%E6%B5%8F%E8%A7%88%E5%99%A8%E6%92%AD%E6%94%BERTSP%E8%A7%86%E9%A2%91%E6%B5%81%E7%9A%84%E6%96%B9%E6%A1%88/">几种浏览器播放RTSP视频流的方案</a><br><a href="https://github.com/AxisCommunications/locomote-video-player">locomote@github</a><br><a href="https://www.adobe.com/devnet/flashplayer/articles/socket_policy_files.html">Setting up a socket policy file server</a></p>
+<h1 id="流媒体技术调研阶段总结："><a href="#流媒体技术调研阶段总结：" class="headerlink" title="流媒体技术调研阶段总结："></a>流媒体技术调研阶段总结：</h1><ol>
+<li>各大厂商IPC提供的流媒体格式普遍都只有RTSP</li>
+<li>海康中心服务器提供的RTSP为私有协议，不是标准的RTSP，仅支持海康提供的SDK&#x2F;控件</li>
+<li>浏览器对于RTSP的支持度为0<br>3.1 VLC控件，基于NPAPI，各大浏览器已经取消了对于NPAPI的支持<br>3.2 FLASH, 9之后，对于socket通信，增加了policyfile认证要求，需要再IPC端增加policy server。IPC的操作系统不开放，在实施过程中难度过大。</li>
+<li>浏览器现支持RTMP\HLS</li>
+</ol>
+<p>总结：需要搭建流媒体服务器，对于RTSP流进行转换，提供RTMP&#x2F;HLS格式。</p>
+<h1 id="开源的解决方案"><a href="#开源的解决方案" class="headerlink" title="开源的解决方案"></a>开源的解决方案</h1><p>看了一圈开源的解决方案，解决了一些转码的问题，界面都不太友好。</p>
+<p>一些集群的方案也都是收费的。</p>
+<p>还是考虑自己搭建一个流媒体服务器，转码+管理平台。</p>
+<p>管理平台不难做，转码部分考虑用ffmpeg。毕竟从头开始看RTSP还是需要一定时间成本的。</p>
+<h1 id="ffmpeg-nginx"><a href="#ffmpeg-nginx" class="headerlink" title="ffmpeg + nginx"></a>ffmpeg + nginx</h1><ul>
+<li><p>服务器安装ffmpeg环境，java代码可以命令行调用ffmpeg，对于指定rtsp进行转码，推送到nginx指定地址。指定rtsp及指定nginx地址由平台进行配置。</p>
+</li>
+<li><p>nginx+rtmp示例 <code>链接：https://pan.baidu.com/s/1sjiKr85jbRUjgqsrhORgQA 提取码：28yw </code></p>
+</li>
+<li><p>当前端发起一个预览请求，后端起一个ffmpeg实例，进行转码。同时，前端取指定rtmp地址获取转码后的视频流。</p>
+</li>
+<li><p>java执行ffmpeg命令使用开源项目<a href="https://github.com/eguid/FFCH4J">FFCH4J</a></p>
+</li>
+<li><p>rtmp播放要使用videojs 5.x的版本，或者videojs7配合videojs-flash.min.js可以播放</p>
+</li>
+<li><p>RTMP延迟2-3s <code>ffmpeg -i rtsp://admin:a1234567@10.30.30.124:554/h264/ch33/sub/av_stream -vcodec libx264 -acodec aac -f flv rtmp://192.168.10.87:1935/live/home</code></p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>播放器<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 导入的videojs是7.0版本以上的，集成VHS协议库，可播放HLS流媒体视频 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;https://unpkg.com/video.js/dist/video-js.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/video.js/dist/video.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 引入的videojs-flash.js插件主要是为播放rtmp视频流--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/videojs-flash@2/dist/videojs-flash.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">&#x27;myvideo&#x27;</span> <span class="attr">width</span>=<span class="string">960</span> <span class="attr">height</span>=<span class="string">540</span> <span class="attr">class</span>=<span class="string">&quot;video-js vjs-default-skin&quot;</span> <span class="attr">controls</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!-- RTMP直播源地址--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">&quot;rtmp://127.0.0.1:1935/live/home&quot;</span>&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"> </span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> player = <span class="title function_">videojs</span>(<span class="string">&#x27;myvideo&#x27;</span>, &#123;&#125;, <span class="keyword">function</span>(<span class="params"></span>)&#123;<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;videojs播放器初始化成功&#x27;</span>)&#125;)</span></span><br><span class="line"><span class="language-javascript">            player.<span class="title function_">play</span>();</span></span><br><span class="line"><span class="language-javascript">        </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>HLS，文件切片播放，延迟由切片大小决定，10s以上<br><code>ffmpeg -i rtsp://admin1:abc123456@10.30.30.100:554/cam/realmonitor?channel=1&amp;subtype=0 -vcodec libx264 -codec:a libfaac -map 0 -f hls -hls_time 10 playlist.m3u8</code></li>
+</ul>
+<h1 id="根据RTSP协议标准进行转码"><a href="#根据RTSP协议标准进行转码" class="headerlink" title="根据RTSP协议标准进行转码"></a>根据RTSP协议标准进行转码</h1><p>熟悉RTSP&amp;RTMP&amp;HLS协议标准，基于socket获取RTSP码流，转换成RTMP&#x2F;HLS，推送到指定地址。</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2019/08/02/StreamingServer-vol2/" style="float: left;">
+        ← 流媒体服务器实践
+    </a>
+    
+    
+    <a class="pull-right" href="/2019/07/05/bios-bluepaint-vol2/">
+        bios蓝图-vol2 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Sidamor. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="mailto:160782633@qq.com" title="email" target="_blank"><i class="icon-email"></i></a></li>
+                    
+                    
+                    <li><a href="https://github.com/Sidamor" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="http://weibo.com/si5d" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+					
+                    <li><a href="https://www.instagram.com/starlv" title="instagram" target="_blank"><i class="icon-instagram"></i></a></li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

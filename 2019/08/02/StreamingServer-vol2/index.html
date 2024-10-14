@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>流媒体服务器实践 | Sidamor</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Sidamor">
+    <meta name="author" content="Sidamor">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Sidamor" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/BigData/" class="animsition-link">BigData<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Hexo/" class="animsition-link">Hexo<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/IOT/" class="animsition-link">IOT<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/JVM/" class="animsition-link">JVM<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MicroService/" class="animsition-link">MicroService<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/StreamingServer/" class="animsition-link">StreamingServer<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Wechaty/" class="animsition-link">Wechaty<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/arm/" class="animsition-link">arm<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/bios/" class="animsition-link">bios<small>(7)</small></a></li>
+				    
+				    <li><a href="/categories/iot/" class="animsition-link">iot<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/tools/" class="animsition-link">tools<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Sidamor</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/Sidamor" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="http://weibo.com/si5d" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.instagram.com/starlv" title="instagram" target="_blank"><i class="icon-instagram"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2019-08-02T08:12:21.000Z" itemprop="datePublished">
+          2019-08-02
+      </time>
+    
+    
+    | 
+    <a href='/tags/rtsp/'>rtsp</a>,
+    
+    <a href='/tags/rtmp/'>rtmp</a>,
+    
+    <a href='/tags/flv/'>flv</a>,
+    
+    <a href='/tags/hls/'>hls</a>
+    
+    
+</span>
+                <h1>流媒体服务器实践</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<ul>
+<li>各大浏览器取消了对于VLC控件的支持（基于NPAPI的一切控件方案 X ）</li>
+<li>从 Flash 10 开始，需要一个 Socket Policy Server 来“授权”，才能允许 Flash 读取其他服务器上的内容，而且你读的视频流在哪个IP地址，Socket Policy Server 也必须在那个服务器上（默认843端口），而摄像头显然没有条件让你在上面跑另外一个服务。 so,基于Flash解码的方案 X</li>
+</ul>
+<p>思考：基于js对于rtsp协议进行解码可行吗？ 限于对js和rtsp了解都不深入，这个方案先放一放，回头讨论（想要学flv.js，通过js对rtsp协议进行解码）。</p>
+<p>总结：搭建流媒体服务器，进行转码、推流</p>
+<span id="more"></span>
+
+<h1 id="技术架构"><a href="#技术架构" class="headerlink" title="技术架构"></a>技术架构</h1><p>思路：</p>
+<ol>
+<li>nginx搭建流媒体服务器  compiled with <a href="https://github.com/winshining/nginx-http-flv-module/blob/master/README.CN.md">nginx-http-flv-module</a></li>
+<li>使用ffmpeg对于摄像头的标准rtsp流进行解码，推送到nginx上</li>
+<li>浏览器从nginx上获取rtmp视频流，或者http-flv视频流</li>
+</ol>
+<p><img src="/.com//architect.png" alt="技术架构图"></p>
+<h1 id="nginx搭建流媒体服务器"><a href="#nginx搭建流媒体服务器" class="headerlink" title="nginx搭建流媒体服务器"></a>nginx搭建流媒体服务器</h1><p>采用了<a href="https://github.com/winshining/nginx-http-flv-module/blob/master/README.CN.md">nginx-http-flv-module</a>，相比<a href="https://obsproject.com/forum/resources/how-to-set-up-your-own-private-rtmp-server-using-nginx.50/">nginx-rtmp-module</a>，不仅增加了对于http-flv的支持，还有一些配置上的优化。</p>
+<table>
+<thead>
+<tr>
+<th align="center">功能</th>
+<th align="center">nginx-http-flv-module</th>
+<th align="center">nginx-rtmp-module</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">HTTP-FLV (播放)</td>
+<td align="center">√</td>
+<td align="center">x</td>
+<td align="center">支持HTTPS-FLV和chunked回复</td>
+</tr>
+<tr>
+<td align="center">GOP缓存</td>
+<td align="center">√</td>
+<td align="center">x</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">虚拟主机</td>
+<td align="center">√</td>
+<td align="center">x</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">省略<code>listen</code>配置</td>
+<td align="center">√</td>
+<td align="center">见备注</td>
+<td align="center">配置中必须有一个<code>listen</code></td>
+</tr>
+<tr>
+<td align="center">纯音频支持</td>
+<td align="center">√</td>
+<td align="center">见备注</td>
+<td align="center"><code>wait_video</code>或<code>wait_key</code>开启后无法工作</td>
+</tr>
+<tr>
+<td align="center">定时打印访问记录</td>
+<td align="center">√</td>
+<td align="center">x</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">JSON风格的stat</td>
+<td align="center">√</td>
+<td align="center">x</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="centos7上的安装"><a href="#centos7上的安装" class="headerlink" title="centos7上的安装"></a>centos7上的安装</h2><ul>
+<li><p>安装</p>
+<p>  yum install <a href="https://extras.getpagespeed.com/release-el$">https://extras.getpagespeed.com/release-el$</a>(rpm -E %{rhel})-latest.rpm<br>  yum install nginx-module-flv</p>
+</li>
+</ul>
+<p>修改&#x2F;etc&#x2F;nginx&#x2F;nginx.conf配置，其中有可能要个性化配置的几个点</p>
+<ol>
+<li>https支持，端口修改</li>
+<li>http中，直播的location我选择了&#x2F;live</li>
+<li>rtmp中，application的名字选择<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line">#worker_processes  1; #运行在Windows上时，设置为1，因为Windows不支持Unix domain socket</span><br><span class="line">worker_processes  auto; #1.3.8和1.2.5以及之后的版本</span><br><span class="line"></span><br><span class="line">#worker_cpu_affinity  0001 0010 0100 1000; #只能用于FreeBSD和Linux</span><br><span class="line">worker_cpu_affinity  auto; #1.9.10以及之后的版本</span><br><span class="line"></span><br><span class="line">error_log logs/error.log error;</span><br><span class="line"></span><br><span class="line">#如果此模块被编译为动态模块并且要使用与RTMP相关的功</span><br><span class="line">#能时，必须指定下面的配置项并且它必须位于events配置</span><br><span class="line">#项之前，否则NGINX启动时不会加载此模块或者加载失败</span><br><span class="line"></span><br><span class="line">load_module modules/ngx_http_flv_live_module.so;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  4096;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /var/www;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /live &#123;</span><br><span class="line">            flv_live on; #打开HTTP播放FLV直播流功能</span><br><span class="line">            chunked_transfer_encoding on; #支持&#x27;Transfer-Encoding: chunked&#x27;方式回复</span><br><span class="line"></span><br><span class="line">            add_header &#x27;Access-Control-Allow-Origin&#x27; &#x27;*&#x27;; #添加额外的HTTP头</span><br><span class="line">            add_header &#x27;Access-Control-Allow-Credentials&#x27; &#x27;true&#x27;; #添加额外的HTTP头</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /hls &#123;</span><br><span class="line">            types &#123;</span><br><span class="line">                application/vnd.apple.mpegurl m3u8;</span><br><span class="line">                video/mp2t ts;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            root /tmp;</span><br><span class="line">            add_header &#x27;Cache-Control&#x27; &#x27;no-cache&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /dash &#123;</span><br><span class="line">            root /tmp;</span><br><span class="line">            add_header &#x27;Cache-Control&#x27; &#x27;no-cache&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /stat &#123;</span><br><span class="line">            #push和pull状态的配置</span><br><span class="line"></span><br><span class="line">            rtmp_stat all;</span><br><span class="line">            rtmp_stat_stylesheet stat.xsl;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location /stat.xsl &#123;</span><br><span class="line">            root /var/www/rtmp; #指定stat.xsl的位置</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        #如果需要JSON风格的stat, 不用指定stat.xsl</span><br><span class="line">        #但是需要指定一个新的配置项rtmp_stat_format</span><br><span class="line"></span><br><span class="line">        #location /stat &#123;</span><br><span class="line">        #    rtmp_stat all;</span><br><span class="line">        #    rtmp_stat_format json;</span><br><span class="line">        #&#125;</span><br><span class="line"></span><br><span class="line">        location /control &#123;</span><br><span class="line">            rtmp_control all; #rtmp控制模块的配置</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">rtmp_auto_push on;</span><br><span class="line">rtmp_auto_push_reconnect 1s;</span><br><span class="line">rtmp_socket_dir /tmp;</span><br><span class="line"></span><br><span class="line">rtmp &#123;</span><br><span class="line">    out_queue           4096;</span><br><span class="line">    out_cork            8;</span><br><span class="line">    max_streams         128;</span><br><span class="line">    timeout             15s;</span><br><span class="line">    drop_idle_publisher 15s;</span><br><span class="line"></span><br><span class="line">    log_interval 5s; #log模块在access.log中记录日志的间隔时间，对调试非常有用</span><br><span class="line">    log_size     1m; #log模块用来记录日志的缓冲区大小</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen 1935;</span><br><span class="line">        server_name www.test.*; #用于虚拟主机名后缀通配</span><br><span class="line"></span><br><span class="line">        application myapp &#123;</span><br><span class="line">            live on;</span><br><span class="line">            gop_cache on; #打开GOP缓存，减少首屏等待时间</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        application hls &#123;</span><br><span class="line">            live on;</span><br><span class="line">            hls on;</span><br><span class="line">            hls_path /tmp/hls;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        application dash &#123;</span><br><span class="line">            live on;</span><br><span class="line">            dash on;</span><br><span class="line">            dash_path /tmp/dash;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen 1935;</span><br><span class="line">        server_name *.test.com; #用于虚拟主机名前缀通配</span><br><span class="line"></span><br><span class="line">        application myapp &#123;</span><br><span class="line">            live on;</span><br><span class="line">            gop_cache on; #打开GOP缓存，减少首屏等待时间</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen 1935;</span><br><span class="line">        server_name www.test.com; #用于虚拟主机名完全匹配</span><br><span class="line"></span><br><span class="line">        application myapp &#123;</span><br><span class="line">            live on;</span><br><span class="line">            gop_cache on; #打开GOP缓存，减少首屏等待时间</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="其他unix系统"><a href="#其他unix系统" class="headerlink" title="其他unix系统"></a>其他unix系统</h2><p>在centos7上也尝试了手动编译nginx，增加了nginx-http-flv-module的依赖</p>
+<ol>
+<li>系统安装 gcc pcre pcre-dev openssl-dev这几个依赖项</li>
+<li>下载<a href="http://nginx.org/en/download.html">nginx源码包</a></li>
+<li>下载<a href="https://github.com/winshining/nginx-http-flv-module">nginx-http-flv-module源码包</a></li>
+<li>解压到同一目录下，进入nginx源码包目录</li>
+<li>编译（默认两个包解压到同一个目录下）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --add-module=../nginx-http-flv-module</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+过程中可能会缺少1中所述的依赖包，根据操作系统情况进行安装就行了</li>
+</ol>
+<ul>
+<li>nginx安装完毕，启动</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从外部检查nginx的端口1935，80是否开放。原因可能有</li>
+</ul>
+<ol>
+<li>nginx.conf配置问题</li>
+<li>操作系统防火墙没有打开</li>
+</ol>
+<h1 id="ffmpeg进行转码、推流"><a href="#ffmpeg进行转码、推流" class="headerlink" title="ffmpeg进行转码、推流"></a>ffmpeg进行转码、推流</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i <span class="string">&quot;rtsp://admin1:abc123456@10.30.30.100:554/cam/realmonitor?channel=1&amp;subtype=0&quot;</span> -vcodec libx264 -acodec aac -f flv rtmp://192.168.10.36:1935/myapp/home</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>rtsp地址外加引号，因为&amp;可能影响命令的识别</li>
+<li>推流地址中，url第一个目录为application配置的地址，第二个为流地址，可以自定义，每一个不同就行了</li>
+</ol>
+<p>PS</p>
+<ol>
+<li>如果取流、推流地址都是确定的，可以将ffmpeg在nginx中配置死</li>
+<li>我们的需求是可以配置流媒体服务器，所以取流、推流的地址都需要改变</li>
+<li>用java调用命令行的方式(exec)，执行ffmpeg转码，从而灵活配置参数。github上有可用的开源项目<a href="https://github.com/eguid/FFCH4J">FFCH4J</a>，感觉作用不大，可以自己写。</li>
+</ol>
+<p>PPS<br>现在的直播延迟有点大(10s+)，ffmpeg的转码效率应该可以进行优化，待研究。</p>
+<h2 id="ffmpeg最新版安装"><a href="#ffmpeg最新版安装" class="headerlink" title="ffmpeg最新版安装"></a>ffmpeg最新版安装</h2><p>[centos下]<a href="https://trac.ffmpeg.org/wiki/CompilationGuide/Centos">https://trac.ffmpeg.org/wiki/CompilationGuide/Centos</a></p>
+<h2 id="参数调优"><a href="#参数调优" class="headerlink" title="参数调优"></a>参数调优</h2><ol>
+<li>码流类型subtype可以选择子码流，速度大大加快</li>
+<li>开启x264的 -preset fast&#x2F;faster&#x2F;verfast&#x2F;superfast&#x2F;ultrafast参数</li>
+<li>使用-tune zerolatency 参数</li>
+<li>码率控制，官方推荐-b和-bufsize搭配使用  -b:v 2000k -bufsize 2000k</li>
+</ol>
+<p>当前最优参数（3-5s延迟）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i <span class="string">&quot;rtsp://admin:abc123456@hua@10.30.30.109:554/cam/realmonitor?channel=1&amp;subtype=1&quot;</span> -tune zerolatency -vcodec libx264 -preset ultrafast -acodec aac -f flv rtmp://192.168.10.36:1935/myapp/home</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="播放端"><a href="#播放端" class="headerlink" title="播放端"></a>播放端</h1><ul>
+<li>rtmp<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rtmp://192.168.10.36:1935/myapp/home</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol>
+<li>myapp是nginx.conf中，rtmp-&gt;application</li>
+<li>home是stream的id，可以自定义，不重复就行</li>
+</ol>
+<ul>
+<li>http-flv<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.10.36/live?app=myapp&amp;stream=home</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol>
+<li>live是nginx.conf中，http-&gt;server-&gt;location，里面配置了flv_live on</li>
+<li>参数中，app对应rtmp的application</li>
+<li>参数中，stream对应ffmpeg推流的流id</li>
+</ol>
+<h2 id="VLC"><a href="#VLC" class="headerlink" title="VLC"></a>VLC</h2><p>实测通过， 10s+延迟</p>
+<h2 id="浏览器-video-js"><a href="#浏览器-video-js" class="headerlink" title="浏览器 video.js"></a>浏览器 video.js</h2><p>未测</p>
+<h2 id="浏览器-flv-js"><a href="#浏览器-flv-js" class="headerlink" title="浏览器 flv.js"></a>浏览器 flv.js</h2><p>未测</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2019/08/07/APIGateway/" style="float: left;">
+        ← APIGateway
+    </a>
+    
+    
+    <a class="pull-right" href="/2019/07/12/StreamingServer/">
+        流媒体服务器技术调研 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Sidamor. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="mailto:160782633@qq.com" title="email" target="_blank"><i class="icon-email"></i></a></li>
+                    
+                    
+                    <li><a href="https://github.com/Sidamor" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="http://weibo.com/si5d" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+					
+                    <li><a href="https://www.instagram.com/starlv" title="instagram" target="_blank"><i class="icon-instagram"></i></a></li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

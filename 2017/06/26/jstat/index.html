@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>JVM调优 Vol.1 | Sidamor</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Sidamor">
+    <meta name="author" content="Sidamor">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Sidamor" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/BigData/" class="animsition-link">BigData<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Hexo/" class="animsition-link">Hexo<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/IOT/" class="animsition-link">IOT<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/JVM/" class="animsition-link">JVM<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MicroService/" class="animsition-link">MicroService<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/StreamingServer/" class="animsition-link">StreamingServer<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Wechaty/" class="animsition-link">Wechaty<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/arm/" class="animsition-link">arm<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/bios/" class="animsition-link">bios<small>(7)</small></a></li>
+				    
+				    <li><a href="/categories/iot/" class="animsition-link">iot<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/tools/" class="animsition-link">tools<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Sidamor</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/Sidamor" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="http://weibo.com/si5d" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.instagram.com/starlv" title="instagram" target="_blank"><i class="icon-instagram"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-06-26T08:09:42.000Z" itemprop="datePublished">
+          2017-06-26
+      </time>
+    
+    
+    | 
+    <a href='/tags/Java/'>Java</a>,
+    
+    <a href='/tags/JVM/'>JVM</a>
+    
+    
+</span>
+                <h1>JVM调优 Vol.1</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>打开jdk安装目录下的bin目录，除了java，javac这些命令，我们还会看到很多。比如：jps, jstat, jinfo, jmap, jhat, jstack等等。这些都是深入探索JVM的工具。今天我们先着重探讨一下jps和jstat这两个命令。</p>
+<span id="more"></span>
+
+<h1 id="jps"><a href="#jps" class="headerlink" title="jps"></a>jps</h1><p>和linux下的ps指令相似，jps用来查看jvm虚拟机下的进程状态。<br>        jps[options][hostid] </p>
+<h2 id="options-选项"><a href="#options-选项" class="headerlink" title="[options]选项"></a>[options]选项</h2><p>-q：仅输出VM标识符，不包括classname,jar name,arguments in main method <br>-m：输出传递给主类main()函数的参数 <br>-l：输出完全的包名，应用主类名，jar的完全路径名 <br>-v：输出虚拟机进程启动时jvm参数 </p>
+<h2 id="hostid-："><a href="#hostid-：" class="headerlink" title="[hostid]："></a>[hostid]：</h2><p>jps可以通过RMI协议查询开启了RMI服务的远程虚拟机进程状态，hostid为RMI注册表中注册的主机名。<br>[protocol:][[&#x2F;&#x2F;]hostname][:port][&#x2F;servername]</p>
+<h2 id="e-g"><a href="#e-g" class="headerlink" title="e.g."></a>e.g.</h2><pre><code>    root@iZ23u31elifZ:~# jps -lv  
+    768 XNYLOCALAppSvr.Main  
+    1633 DPPLOCALAlertCenter.Main  
+    739 BSTRMI.Main  
+    761 XNYLOCALRMI.Main  
+    749 DPPLOCALAppSvr.Main  
+    2429 sun.tools.jps.Jps -Denv.class.path=.:/usr/local/jdk_64/lib/dt.jar:/usr/local/jdk_64/lib/tools.jar -Dapplication.home=/usr/local/jdk_64 -Xms8m  
+    750 DPPLOCALRMI.Main  
+    1631 org.apache.catalina.startup.Bootstrap -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Xms300m -Xmx500m -XX:MaxNewSize=128m -XX:PermSize=128M -XX:MaxPermSize=256m -XX:+UseParallelOldGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/var/log/tomcat/dumpfile/heap.bin -Xloggc:/var/log/tomcat/logs/gc.log -Djdk.tls.ephemeralDHKeySize=2048 -Djava.endorsed.dirs=/usr/local/tomcat/endorsed -Dcatalina.base=/usr/local/tomcat -Dcatalina.home=/usr/local/tomcat -Djava.io.tmpdir=/usr/local/tomcat/temp  
+</code></pre>
+<p>以上，显示了进程id，完整的包名，以及启动时jvm参数</p>
+<h1 id="jstat"><a href="#jstat" class="headerlink" title="jstat"></a>jstat</h1><p>语法结构：</p>
+<pre><code>    Usage: jstat -help|-options
+        jstat -&lt;option&gt; [-t] [-h&lt;lines&gt;] &lt;vmid&gt; [&lt;interval&gt; [&lt;count&gt;]]
+        
+</code></pre>
+<p>参数解释：</p>
+<pre><code>    Options — 选项，我们一般使用 -gcutil 查看gc情况
+    vmid    — VM的进程号，即当前运行的java进程号
+    interval– 间隔时间，单位为秒或者毫秒
+    count   — 打印次数，如果缺省则打印无数次
+    
+</code></pre>
+<p>S0  — Heap上的 Survivor space 0 区已使用空间的百分比<br>S1  — Heap上的 Survivor space 1 区已使用空间的百分比<br>E   — Heap上的 Eden space 区已使用空间的百分比<br>O   — Heap上的 Old space 区已使用空间的百分比<br>P   — Perm space 区已使用空间的百分比；jdk1.8之后对于方法区的实现改为M(MetaSpace)<br>CCS — 压缩使用比例<br>YGC — 从应用程序启动到采样时发生 Young GC 的次数<br>YGCT– 从应用程序启动到采样时 Young GC 所用的时间(单位秒)<br>FGC — 从应用程序启动到采样时发生 Full GC 的次数<br>FGCT– 从应用程序启动到采样时 Full GC 所用的时间(单位秒)<br>GCT — 从应用程序启动到采样时用于垃圾回收的总时间(单位秒)</p>
+<pre><code>    root@iZ23u31elifZ:~# jstat -gcutil 1631 1000 10
+      S0     S1     E      O      M     CCS      YGC    YGCT    FGC    FGCT     GCT   
+      0.00   0.00   0.00  23.38  94.84  87.64    118    1.049    94    8.640    9.689
+      0.00  53.62   0.00  23.44  94.84  87.64    123    1.064    99    9.147   10.212
+      3.12   0.00   0.00  23.45  94.84  87.64    130    1.087   106    9.774   10.861
+      0.00   2.30   0.00  23.48  94.84  87.64    133    1.109   108    9.953   11.062
+      6.76   0.00   3.26  21.07  94.84  87.64    134    1.119   108   10.046   11.165
+      6.76   0.00   6.29  21.07  94.84  87.64    134    1.119   108   10.046   11.165
+      6.76   0.00   6.29  21.07  94.84  87.64    134    1.119   108   10.046   11.165
+      6.76   0.00   6.29  21.07  94.84  87.64    134    1.119   108   10.046   11.165
+      6.76   0.00   6.41  21.07  94.84  87.64    134    1.119   108   10.046   11.165
+      6.76   0.00   6.41  21.07  94.84  87.64    134    1.119   108   10.046   11.165
+</code></pre>
+<p>以上，10秒打印记录（一秒一次）。</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2017/06/28/Docker4IOT/" style="float: left;">
+        ← 使用Docker搭建IOT
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/06/01/bsd-iot-framework/">
+        物联网架构设计 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Sidamor. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="mailto:160782633@qq.com" title="email" target="_blank"><i class="icon-email"></i></a></li>
+                    
+                    
+                    <li><a href="https://github.com/Sidamor" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="http://weibo.com/si5d" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+					
+                    <li><a href="https://www.instagram.com/starlv" title="instagram" target="_blank"><i class="icon-instagram"></i></a></li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>

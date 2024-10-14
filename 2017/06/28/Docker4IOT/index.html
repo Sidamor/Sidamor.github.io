@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!--<![endif]-->
+
+<head>
+  <title>使用Docker搭建IOT | Sidamor</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Sidamor">
+    <meta name="author" content="Sidamor">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Sidamor" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+	
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+    
+
+    <!-- Custom stylesheet, (add custom styles here, always load last) -->
+    <!-- Load our stylesheet for IE8 -->
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- Google Webfonts (Monserrat 400/700, Open Sans 400/600) -->
+    <link href='//fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.useso.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    <!-- Load our fonts individually if IE8+, to avoid faux bold & italic rendering -->
+    <!--[if IE]>
+    <link href='http://fonts.useso.com/css?family=Montserrat:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Open+Sans:600' rel='stylesheet' type='text/css'>
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/BigData/" class="animsition-link">BigData<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Hexo/" class="animsition-link">Hexo<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/IOT/" class="animsition-link">IOT<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/JVM/" class="animsition-link">JVM<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/MicroService/" class="animsition-link">MicroService<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/StreamingServer/" class="animsition-link">StreamingServer<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Wechaty/" class="animsition-link">Wechaty<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/arm/" class="animsition-link">arm<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/bios/" class="animsition-link">bios<small>(7)</small></a></li>
+				    
+				    <li><a href="/categories/iot/" class="animsition-link">iot<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/tools/" class="animsition-link">tools<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="http://go.kieran.top/" class="animsition-link">Kieran</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Sidamor</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/Sidamor" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li><a href="http://weibo.com/si5d" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.instagram.com/starlv" title="instagram" target="_blank"><i class="icon-instagram"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2017-06-28T09:26:58.000Z" itemprop="datePublished">
+          2017-06-28
+      </time>
+    
+    
+    | 
+    <a href='/tags/Docker/'>Docker</a>,
+    
+    <a href='/tags/IOT/'>IOT</a>
+    
+    
+</span>
+                <h1>使用Docker搭建IOT</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p>Flux7博客看到的Docker在iot的应用。</p>
+<span id="more"></span>
+
+<p><a href="http://blog.flux7.com/blogs/docker/using-docker-for-quick-and-easy-multi-tenancy">原文地址</a>。</p>
+<p>最近在Flux7实验室，我们开发了一个端到端物联网项目，接收传感器数据，向服务提供商的最终用户提供报告。我们的客户要求我们支持多家服务提供商进行新的业务。我们知道，重新构建应用程序以，加入重大改变，这样做对我们的客户来说费时费力。不仅如此，它还需要一个复杂，不灵活，难以维护的代码库。</p>
+<p>我们一直在探索使用容器技术Docker的潜力来建立Flux7实验室的内部开发环境，并根据我们的发现，相信我们可以使用它来避免主要的应用程序重写。因此，我们决定使用Docker容器，给每个服务提供商在应用层运行多个实例，创建独立的环境来提供快速、简单、便宜的“多租户”技术（单一软件程序为多个客户服务的架构）。</p>
+<h1 id="What’s-Docker"><a href="#What’s-Docker" class="headerlink" title="What’s Docker"></a>What’s Docker</h1><p>Docker在Linux容器（LXCs）的顶层，提供了“用户友好”的一层。 LXCs通过限制一个进程的资源，提供了操作系统级的虚拟化。除了使用chroot命令来改变给定的进程中访问的目录的权限，Docker有效地提供了一个进程组和其他文件和系统进程的隔离，而无需运行另一个操作系统的开销。</p>
+<h1 id="In-the-Beginning"><a href="#In-the-Beginning" class="headerlink" title="In the Beginning"></a>In the Beginning</h1><p>“single provider”版本的程序一般由3部分组成：</p>
+<ol>
+<li>Cassandra用于数据持久性，我们稍后会用来生成每个网关的报告。</li>
+<li>一个基于Twisted的TCP_Svr,在6000端口监听来自提供商的多个网关的数据。<br>3.一个基于Flask的app在80端口，给用户提供管理、配置、查看报表的服务。</li>
+</ol>
+<p>过去，我们使用以下方式启动”SingleProvider”单一提供商版本的服务。所有代码在Cassandra的分布式框架下都很难部署。</p>
+<p><img src="/.com//Pre_Sche.png" alt="单一提供商架构"> </p>
+<h1 id="Our-New-Approach"><a href="#Our-New-Approach" class="headerlink" title="Our New Approach"></a>Our New Approach</h1><p>尽管Docker是一个有趣的新兴技术容器，它仍然处于发展的初级阶段。正如预期的那样，它有尚待解决的问题。对于我们来说，最大的问题是，Docker不能支持在一台机器上运行多个Cassandra 实例。因此，我们不能使用Cassandra 提供“multi-tenancy”技术。我们的另一个问题是，在一台机器上托管多个数据库实例会迅速造成资源短缺。</p>
+<p>我们讨论的是通过传统的方式解决“multi-tenancy”技术。</p>
+<ol>
+<li>使用Cassandra KEYSPACE作为提供商的数据存储的命名空间。</li>
+<li>对于数据采集和Web服务器进行了对应的代码修改出，增加了数据库访问的密钥空间参数。</li>
+<li>通过命令行给各应用实例传Cassandra KEYSPACE（供应商ID），让它可以在未来使用自定义外观和其他功能。</li>
+</ol>
+<p>因此，我们可以不需要更改家庭模式，而是在数据存储为每个创造一个单独的命名空间。</p>
+<p>我们的方法的优点是，通过使用Docker提供“multi-tenancy”技术，唯一需要的代码修改就是上面那些Cassandra KEYSPACE。如果我们不使用Docker，我们就不得不做出大量的代码更改，重写应用程序。</p>
+<h1 id="How-We-Did-It-Multi-Tenant-Database-Architecture"><a href="#How-We-Did-It-Multi-Tenant-Database-Architecture" class="headerlink" title="How We Did It - Multi Tenant Database Architecture"></a>How We Did It - Multi Tenant Database Architecture</h1><p><img src="/.com//Now_Sche.jpg" alt="多提供商架构"> </p>
+<ol>
+<li>创建一个Docker容器，设置了对应的环境和依赖关系。</li>
+<li>启动一个Cassandra的容器。</li>
+</ol>
+<p>尽管我们没有运行Cassandra的多个实例，我们想要充分利用Docker的安全、管理和易于配置的特点。您可以从Github下载我们的Cassandra文件。我们在端口9160运行容器，使用以下命令：</p>
+<p>2.1 使用pycassaShell创建一个密钥空间“provider1”。<br>2.2 在两个独立的容器启动我们的两个代码库</p>
+<pre><code>    Voila! We had a provider1 instance running in no time.
+</code></pre>
+<h1 id="Automation"><a href="#Automation" class="headerlink" title="Automation"></a>Automation</h1><p>用Docker-py自动化这些步骤、使用</p>
+<p>为完善解决方案，我们为每一个新的提供商分配一个端口，并创造Cassandra keyspaces。</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>我们很快就为我们的客户端提供了一个解决方案，基于“在每个容器空间运行对应的提供商程序”。我们不能使用虚拟机来提供该功能，因为虚拟机需要太多的资源和太多的专用内存。事实上，谷歌正在从使用虚拟机转换过来，已经成为Linux容器最大的贡献者之一，并形成了Docker的基础技术。我们可以使用多个实例，但随后我们会显著地过量分配资源。修改应用程序也会增加不必要的复杂性，成本和实施时间。</p>
+<p>在最后，客户非常高兴，我们开发出满足他的确切需求的解决方案，同时也为他节省了钱。我们也很高兴，我们创造了可应用于未来客户需求的解决方案。</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="pagination" role="pagination">
+    
+    <a class="pull-left" href="/2019/02/08/bios-OpenFrame/" style="float: left;">
+        ← bios-开放框架-I
+    </a>
+    
+    
+    <a class="pull-right" href="/2017/06/26/jstat/">
+        JVM调优 Vol.1 →
+    </a>
+    
+</nav>
+
+        <div class="duoshuo">
+
+
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Sidamor. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="mailto:160782633@qq.com" title="email" target="_blank"><i class="icon-email"></i></a></li>
+                    
+                    
+                    <li><a href="https://github.com/Sidamor" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="http://weibo.com/si5d" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+					
+                    <li><a href="https://www.instagram.com/starlv" title="instagram" target="_blank"><i class="icon-instagram"></i></a></li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/jquery.flexslider-min.js"></script><!-- Flexslider plugin -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+<!-- Initiate flexslider plugin -->
+<script type="text/javascript">
+    $(document).ready(function($) {
+      $('.flexslider').flexslider({
+        animation: "fade",
+        prevText: "",
+        nextText: "",
+        directionNav: true
+      });
+    });
+</script>
+
+</body>
+</html>
