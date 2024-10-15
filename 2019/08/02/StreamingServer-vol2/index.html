@@ -244,7 +244,7 @@
 <li>使用ffmpeg对于摄像头的标准rtsp流进行解码，推送到nginx上</li>
 <li>浏览器从nginx上获取rtmp视频流，或者http-flv视频流</li>
 </ol>
-<p><img src="/.com//architect.png" alt="技术架构图"></p>
+<p><img src="/2019/08/02/StreamingServer-vol2/architect.png" alt="技术架构图"></p>
 <h1 id="nginx搭建流媒体服务器"><a href="#nginx搭建流媒体服务器" class="headerlink" title="nginx搭建流媒体服务器"></a>nginx搭建流媒体服务器</h1><p>采用了<a href="https://github.com/winshining/nginx-http-flv-module/blob/master/README.CN.md">nginx-http-flv-module</a>，相比<a href="https://obsproject.com/forum/resources/how-to-set-up-your-own-private-rtmp-server-using-nginx.50/">nginx-rtmp-module</a>，不仅增加了对于http-flv的支持，还有一些配置上的优化。</p>
 <table>
 <thead>

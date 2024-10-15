@@ -248,9 +248,9 @@
 </ul>
 <p>从 Aggr Api Gateway 到后端微服务集群这中间就属于内部的通讯了，我们可以使用对内部友好的通讯协议比如 gRPC 或者 AMQP 等，然后进行 RPC调用提高通讯性能。</p>
 <p>注意：Aggr Api Gateway 这个网关对于一些接口来说的话并不是必须的，也可以由后端微服务直接提供REST API给第一层网关使用。</p>
-<p><img src="/.com//%E5%9B%BE1.png" alt="图1"></p>
+<p><img src="/2019/08/07/APIGateway/%E5%9B%BE1.png" alt="图1"></p>
 <p>结合之前描述的应用情景，加入我们需要的一些用户、权限模块，如图2所示</p>
-<p><img src="/.com//%E5%9B%BE2.png" alt="图2"></p>
+<p><img src="/2019/08/07/APIGateway/%E5%9B%BE2.png" alt="图2"></p>
 <h2 id="API网关"><a href="#API网关" class="headerlink" title="API网关"></a>API网关</h2><p><a href="https://www.servicemesher.com/istio-handbook/best-practices/how-to-implement-ingress-gateway.html">为服务网格选择入口网关</a><br>ApiGateway + Sidecar Proxy</p>
 <ol>
 <li>所有服务注册（不论集群内部还是外部），api网关提供（权限中心）接口发放appKey&amp;appSecret</li>
@@ -292,7 +292,7 @@
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2024/10/12/space-intelligence/" style="float: left;">
+    <a class="pull-left" href="/2024/10/15/spatial-intelligence/" style="float: left;">
         ← 空间智能化
     </a>
     

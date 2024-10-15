@@ -239,7 +239,7 @@
 <li>一个基于Twisted的TCP_Svr,在6000端口监听来自提供商的多个网关的数据。<br>3.一个基于Flask的app在80端口，给用户提供管理、配置、查看报表的服务。</li>
 </ol>
 <p>过去，我们使用以下方式启动”SingleProvider”单一提供商版本的服务。所有代码在Cassandra的分布式框架下都很难部署。</p>
-<p><img src="/.com//Pre_Sche.png" alt="单一提供商架构"> </p>
+<p><img src="/2017/06/28/Docker4IOT/Pre_Sche.png" alt="单一提供商架构"> </p>
 <h1 id="Our-New-Approach"><a href="#Our-New-Approach" class="headerlink" title="Our New Approach"></a>Our New Approach</h1><p>尽管Docker是一个有趣的新兴技术容器，它仍然处于发展的初级阶段。正如预期的那样，它有尚待解决的问题。对于我们来说，最大的问题是，Docker不能支持在一台机器上运行多个Cassandra 实例。因此，我们不能使用Cassandra 提供“multi-tenancy”技术。我们的另一个问题是，在一台机器上托管多个数据库实例会迅速造成资源短缺。</p>
 <p>我们讨论的是通过传统的方式解决“multi-tenancy”技术。</p>
 <ol>
@@ -249,7 +249,7 @@
 </ol>
 <p>因此，我们可以不需要更改家庭模式，而是在数据存储为每个创造一个单独的命名空间。</p>
 <p>我们的方法的优点是，通过使用Docker提供“multi-tenancy”技术，唯一需要的代码修改就是上面那些Cassandra KEYSPACE。如果我们不使用Docker，我们就不得不做出大量的代码更改，重写应用程序。</p>
-<h1 id="How-We-Did-It-Multi-Tenant-Database-Architecture"><a href="#How-We-Did-It-Multi-Tenant-Database-Architecture" class="headerlink" title="How We Did It - Multi Tenant Database Architecture"></a>How We Did It - Multi Tenant Database Architecture</h1><p><img src="/.com//Now_Sche.jpg" alt="多提供商架构"> </p>
+<h1 id="How-We-Did-It-Multi-Tenant-Database-Architecture"><a href="#How-We-Did-It-Multi-Tenant-Database-Architecture" class="headerlink" title="How We Did It - Multi Tenant Database Architecture"></a>How We Did It - Multi Tenant Database Architecture</h1><p><img src="/2017/06/28/Docker4IOT/Now_Sche.jpg" alt="多提供商架构"> </p>
 <ol>
 <li>创建一个Docker容器，设置了对应的环境和依赖关系。</li>
 <li>启动一个Cassandra的容器。</li>
